@@ -7,7 +7,7 @@ const ArticleBox = ({ post, skeleton }) => {
     <>
       {skeleton ? (
         <Flex
-          w="90%"
+          w="100%"
           minW="150px"
           minH="300px"
           h="15vw"

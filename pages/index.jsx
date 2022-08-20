@@ -1,16 +1,22 @@
-import { useState } from "react";
-import { Box, Grid, Flex } from "@chakra-ui/react";
+import React, { Suspense } from "react";
+import useRickAndMorty from "hooks/useRickAndMorty";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import ArticleBox from "@/molecules/article/ArticleBox";
-import { useContext } from "react";
-import { AppContext } from "context";
-export default function Home() {
-  const { posts } = useContext(AppContext);
+import Card from "@/molecules/card/Card";
+function Home() {
+  const { store } = useRickAndMorty();
 
   return (
-    <Box mx={"6%"} my={"2%"}>
-      <Flex justify={"center"} align="center">
-        <ArticleBox skeleton={true} />
-      </Flex>
+    <Box my={"2%"}>
+      <Suspense fallback={<ArticleBox skeleton={true} />}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap="10" my="15vh">
+          {store.characters?.map((character) => (
+            <Card key={character.id} character={character} />
+          ))}
+        </SimpleGrid>
+      </Suspense>
     </Box>
   );
 }
+
+export default Home;
