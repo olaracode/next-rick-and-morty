@@ -1,10 +1,22 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useContext } from "react";
+import { AppContext } from "context";
+import { PropTypes } from "prop-types";
 import useRickAndMorty from "hooks/useRickAndMorty";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import ArticleBox from "@/molecules/article/ArticleBox";
 import Card from "@/molecules/card/Card";
-function Home() {
+import { fetchCharacters, fetchEpisodes } from "./api/getCharacters";
+import { useEffect } from "react";
+function Home({ characters, episodes }) {
   const { store } = useRickAndMorty();
+  const { setCharacters, setEpisodes } = useContext(AppContext);
+
+  useEffect(() => {
+    if (store.characters > 0) return;
+    console.log("me seteo en el home");
+    setCharacters(characters);
+    setEpisodes(episodes);
+  }, []);
 
   return (
     <Box my={"2%"}>
@@ -17,6 +29,22 @@ function Home() {
       </Suspense>
     </Box>
   );
+}
+
+Home.propTypes = {
+  characters: PropTypes.array,
+  episodes: PropTypes.array,
+};
+
+export async function getStaticProps() {
+  const response = await fetchCharacters();
+  const episodesReponse = await fetchEpisodes();
+  return {
+    props: {
+      characters: await response,
+      episodes: await episodesReponse,
+    },
+  };
 }
 
 export default Home;
