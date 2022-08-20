@@ -9,7 +9,7 @@ function Home() {
   return (
     <Box my={"2%"}>
       <Suspense fallback={<ArticleBox skeleton={true} />}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap="10" my="15vh">
+        <SimpleGrid columns={{ base: 2, md: 2, lg: 3 }} gap="10" my="15vh">
           {store.characters?.map((character) => (
             <Card key={character.id} character={character} />
           ))}

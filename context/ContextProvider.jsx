@@ -6,8 +6,8 @@ const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
   let [isDarkTheme, setDarkTheme] = useState(false);
-  let [characters, setCharacters] = useState(null);
-  let [episodes, setEpisodes] = useState(null);
+  let [characters, setCharacters] = useState();
+  let [episodes, setEpisodes] = useState();
   let { fetchCharacters } = useRickAndMorty();
 
   const data = {
@@ -20,6 +20,7 @@ export const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    if (characters?.length > 0) return;
     (async () => {
       const response = await fetchCharacters();
       setCharacters(response);

@@ -1,9 +1,12 @@
+import React from "react";
+import { PropTypes } from "prop-types";
 import Navbar from "@/organisms/navbar/";
 import ThemeProvider from "theme/ThemeProvider";
 import "../styles/globals.css";
 import { AppProvider } from "context/ContextProvider";
-import { Box } from "@chakra-ui/react" 
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
+
 function MyApp({ Component, pageProps }) {
   return (
     <AppProvider>
@@ -17,12 +20,17 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider>
         <Navbar />
-	  <Box mx={{ base: "5%", md: "15%", xl:"25%" }}>
-            <Component {...pageProps} />
-	  </Box>
+        <Box mx={{ base: "5%", md: "15%", xl: "25%" }}>
+          <Component {...pageProps} />
+        </Box>
       </ThemeProvider>
     </AppProvider>
   );
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.any,
+  pageProps: PropTypes.any,
+};
 
 export default MyApp;

@@ -1,27 +1,46 @@
 import { extendTheme } from "@chakra-ui/react";
 
+const components = {
+  Button: {
+    variants: {
+      outline: {
+        bg: "transparent",
+        border: "1px",
+        borderRadius: "18px",
+        borderColor: "brand.main",
+        fontWeight: "300",
+        _hover: {
+          filter: "brightness(98%)",
+          backgroundColor: "brand.card",
+        },
+      },
+    },
+  },
+};
+
 export const darkTheme = extendTheme({
   styles: {
     global: {
       body: {
         color: "#ffffff",
-        background: "#0A131F",
+        background: "#14152D",
       },
     },
   },
   colors: {
     brand: {
-      bg: "#0A131F",
-      card: "#14243B",
-      main: "#457B9D",
-      light: "#A8DADC",
-      accent: "#E63946",
+      bg: "#14152D",
+      card: "#1F2145",
+      main: "#83BE4C",
+      accent: "#A3CBA4",
+      light: "#EDF0E4",
     },
     text: {
-      main: "#ffffff",
+      main: "#EDF0E4",
       hover: "#000",
     },
   },
+  components: { ...components },
 });
 
 export const lightTheme = extendTheme({
@@ -29,21 +48,21 @@ export const lightTheme = extendTheme({
     global: {
       body: {
         color: "black",
-        background: "#ffffff",
+        background: "#fafafa",
       },
     },
   },
   colors: {
     brand: {
-      bg: "#ffffff",
-      card: "#fafafa",
-      main: "#457B9D",
-      light: "#A8DADC",
-      accent: "#E63946",
+      bg: "#fafafa",
+      card: "#EDF0E4",
+      main: "#83BE4C",
+      accent: "#1F2145",
+      light: "#fafafa",
     },
     text: {
-      main: "#000000",
-      hover: "#457B9D",
+      main: "#1F2145",
     },
   },
+  components: { ...components },
 });

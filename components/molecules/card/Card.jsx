@@ -7,9 +7,10 @@ import { useBreakpointValue } from "@chakra-ui/react";
 const Card = ({ character }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const variants = useBreakpointValue({
-    base: "-35%",
+    base: "-60%",
+    sm: "-55%",
     md: "-50%",
-    lg: "-30%",
+    lg: "-40%",
   });
   const animation = {
     entry: {
@@ -29,9 +30,16 @@ const Card = ({ character }) => {
       position="relative"
       shadow={"md"}
       w="100%"
-      minH={{ base: "300px", md: "200px", lg: "300px" }}
+      minH={{
+        base: "180px",
+        sm: "200px",
+        md: "220px",
+        lg: "250px",
+      }}
+      background={"brand.card"}
       borderRadius="3xl"
       boxSizing="border-box"
+      cursor={"pointer"}
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
     >
