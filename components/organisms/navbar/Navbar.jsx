@@ -3,52 +3,42 @@ import {
   Box,
   Flex,
   Text,
-  Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   Image,
-  Icon,
 } from "@chakra-ui/react";
-import CustomButton from "@/atoms/CustomButton";
 import { faBars, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AppContext } from "context";
 const Navbar = () => {
   const { isDarkTheme, setDarkTheme } = useContext(AppContext);
-  const logo = "/assets/imgs/techielogo.svg";
+  const logo = "/assets/imgs/logo.png";
   return (
-    <Box w="100%" bg="brand.card" shadow={"md"}>
+    <Box
+      w="100%"
+      bg="brand.card"
+      shadow={"md"}
+      position="fixed"
+      top="0px"
+      zIndex={999}
+    >
       <Flex justify={"space-between"} h={"60px"} mx={"6%"} align="center">
         <Flex justify={"center"} align="center" gap="3">
-          <Image src={logo} h="30px" />
-          <Text
-            as="p"
-            fontSize="16px"
-            cursor="pointer"
-            color={"brand.main"}
-            fontWeight={"bold"}
-          >
-            Techie
-          </Text>
+          <Image src={logo} alt="logo" h="50px" />
         </Flex>
-        <Flex gap={2} align="center" display={{ base: "none", md: "flex" }}>
-          <Button bg="none" onClick={() => setDarkTheme(!isDarkTheme)}>
-            <FontAwesomeIcon icon={faMoon} />
-          </Button>
-          <CustomButton bg="none" hover={false} content="About" />
-          <CustomButton bg="none" content="Login" hover="true" />
-          <CustomButton ftColor={"white"} hover={true} content="register" />
-        </Flex>
-        <Box display={{ sm: "block", md: "none", lg: "none", xl: "none" }}>
+
+        <Box>
           <Menu>
             <MenuButton
               border="2px solid"
               borderColor="brand.main"
               py="10px"
               px="15px"
-              borderRadius="8px"
+              backgroundColor="brand.card"
+              borderRadius="18px"
+              color="brand.main"
             >
               <FontAwesomeIcon icon={faBars} />
             </MenuButton>
@@ -61,7 +51,7 @@ const Navbar = () => {
             >
               <MenuItem
                 _hover={{ color: "text.hover" }}
-                borderRadius="8px"
+                borderRadius="18px"
                 onClick={() => setDarkTheme(!isDarkTheme)}
               >
                 <Flex gap={2} w="100%" align="center">
@@ -69,21 +59,14 @@ const Navbar = () => {
                   <Text>Theme</Text>
                 </Flex>
               </MenuItem>
-              <MenuItem _hover={{ color: "text.hover" }} borderRadius="8px">
+              <MenuItem _hover={{ color: "text.hover" }} borderRadius="18px">
                 About
               </MenuItem>
-              <MenuItem _hover={{ color: "text.hover" }} borderRadius="8px">
-                Login
+              <MenuItem _hover={{ color: "text.hover" }} borderRadius="18px">
+                Characters
               </MenuItem>
-              <MenuItem
-                my="3"
-                _hover={{ color: "text.hover" }}
-                borderRadius="8px"
-                bg={"brand.main"}
-              >
-                <Text textAlign={"center"} w="100%">
-                  Register
-                </Text>
+              <MenuItem _hover={{ color: "text.hover" }} borderRadius="18px">
+                Episodes
               </MenuItem>
             </MenuList>
           </Menu>
