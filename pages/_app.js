@@ -6,7 +6,6 @@ import "../styles/globals.css";
 import { AppProvider } from "context/ContextProvider";
 import { Box } from "@chakra-ui/react";
 import Head from "next/head";
-
 function MyApp({ Component, pageProps }) {
   return (
     <AppProvider>
@@ -31,6 +30,7 @@ function MyApp({ Component, pageProps }) {
 MyApp.propTypes = {
   Component: PropTypes.any,
   pageProps: PropTypes.any,
+  characters: PropTypes.array,
 };
 
 export default MyApp;

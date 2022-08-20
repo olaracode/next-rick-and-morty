@@ -1,14 +1,14 @@
 import React, { createContext, useState } from "react";
 import { PropTypes } from "prop-types";
 import { useEffect } from "react";
-import useRickAndMorty from "hooks/useRickAndMorty";
+import { fetchCharacters } from "pages/api/getCharacters";
+
 const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
   let [isDarkTheme, setDarkTheme] = useState(false);
   let [characters, setCharacters] = useState();
   let [episodes, setEpisodes] = useState();
-  let { fetchCharacters } = useRickAndMorty();
 
   const data = {
     characters,
@@ -22,6 +22,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     if (characters?.length > 0) return;
     (async () => {
+      console.log("me seteo en el contexto");
       const response = await fetchCharacters();
       setCharacters(response);
     })();
