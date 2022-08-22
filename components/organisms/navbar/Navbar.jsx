@@ -1,4 +1,7 @@
 import React, { useContext } from "react";
+import { AppContext } from "context";
+import { useRouter } from "next/router";
+// * Components
 import {
   Box,
   Flex,
@@ -11,9 +14,11 @@ import {
 } from "@chakra-ui/react";
 import { faBars, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AppContext } from "context";
+
 const Navbar = () => {
   const { isDarkTheme, setDarkTheme } = useContext(AppContext);
+  const router = useRouter();
+
   const logo = "/assets/imgs/logo.png";
   return (
     <Box
@@ -24,9 +29,19 @@ const Navbar = () => {
       top="0px"
       zIndex={999}
     >
-      <Flex justify={"space-between"} h={"60px"} mx={"6%"} align="center">
-        <Flex justify={"center"} align="center" gap="3">
-          <Image src={logo} alt="logo" h="50px" />
+      <Flex
+        justify={"space-between"}
+        h={"60px"}
+        mx={{ base: "5%", md: "15%", xl: "25%" }}
+        align="center"
+      >
+        <Flex
+          justify={"center"}
+          align="center"
+          gap="3"
+          onClick={() => router.push("/")}
+        >
+          <Image src={logo} alt="logo" h="50px" cursor="pointer" />
         </Flex>
 
         <Box>

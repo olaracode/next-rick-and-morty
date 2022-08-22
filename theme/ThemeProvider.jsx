@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { PropTypes } from "prop-types";
 import { darkTheme, lightTheme } from "./theme";
 import { ChakraProvider, Box } from "@chakra-ui/react";
 import { AppContext } from "context";
