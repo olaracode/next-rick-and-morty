@@ -16,4 +16,8 @@ const ThemeProvider = ({ children }) => {
   );
 };
 
+ThemeProvider.propTypes = {
+  children: PropTypes.any,
+};
+
 export default ThemeProvider;
