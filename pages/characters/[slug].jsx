@@ -15,21 +15,25 @@ const Product = () => {
     setCharacter(currentCharacter);
   }, [store.characters]);
   return (
-    <Flex 
-	  my="100px" 
-	  flexDir="column" 
-	  align="center" 
-	  backgroundColor="brand.card" 
-	  borderRadius="18px" 
-	  p="5"
+    <Flex
+      my="100px"
+      flexDir="column"
+      align="center"
+      backgroundColor="brand.card"
+      borderRadius="18px"
+      p="5"
     >
-      
-      <Image src={character?.image} w="100%" borderRadius="full" />
+      <Image
+        src={character?.image}
+        w="100%"
+        borderRadius="full"
+        alt={`${character?.name}-image`}
+      />
       <Box mt="5">
-	  <Text>{character?.name}</Text>
-	  <Text>{character?.status}</Text>
-	  <Text>{character?.species}</Text>
-	  <Text>{character?.origin.name}</Text>
+        <Text>{character?.name}</Text>
+        <Text>{character?.status}</Text>
+        <Text>{character?.species}</Text>
+        <Text>{character?.origin.name}</Text>
       </Box>
     </Flex>
   );

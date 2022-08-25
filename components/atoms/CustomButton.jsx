@@ -1,4 +1,6 @@
 import React from "react";
+import { PropTypes } from "prop-types";
+
 import { Button } from "@chakra-ui/react";
 
 const CustomButton = ({ content, bg, ftColor, hover, ...props }) => {
@@ -15,4 +17,11 @@ const CustomButton = ({ content, bg, ftColor, hover, ...props }) => {
   );
 };
 
+CustomButton.propTypes = {
+  content: PropTypes.string,
+  bg: PropTypes.string,
+  ftColor: PropTypes.string,
+  hover: PropTypes.boolean,
+  props: PropTypes.any,
+};
 export default CustomButton;

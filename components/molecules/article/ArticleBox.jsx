@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Flex, Skeleton, Text, SkeletonText } from "@chakra-ui/react";
+import { PropTypes } from "prop-types";
+import { Box, Flex, Skeleton, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 const ArticleBox = ({ post, skeleton }) => {
   const router = useRouter();
@@ -42,4 +43,8 @@ const ArticleBox = ({ post, skeleton }) => {
   );
 };
 
+ArticleBox.propTypes = {
+  post: PropTypes.object,
+  skeleton: PropTypes.any,
+};
 export default ArticleBox;
